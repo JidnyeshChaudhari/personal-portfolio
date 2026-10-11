@@ -1,0 +1,23 @@
+
+/* About section spans the page, with content centered in a readable area. */
+.about {
+  margin-top: -60px;
+
+  /* Center the content while preserving the full-width hover area. */
+  padding: 40px max(calc((100% - 1090px) / 2), 6%);
+}
+
+/* About and Contact section headings. */
+.about h2,
+.contact h2 {
+  margin: 0 0 3px;
+  font-size: 25px;
+  font-weight: normal;
+}
+
+/* About section paragraphs. */
+.about p {
+  margin: 0 0 16px;
+  font-size: 15px;
+  line-height: 1.4;
+}

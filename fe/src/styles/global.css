@@ -1,0 +1,17 @@
+/* Apply consistent sizing to every element. */
+* {
+  box-sizing: border-box;
+}
+
+/* Enable smooth scrolling for navigation links. */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Set the default appearance of the page. */
+body {
+  margin: 0;
+  background: #fff;
+  color: #000;
+  font-family: Georgia, "Times New Roman", serif;
+}

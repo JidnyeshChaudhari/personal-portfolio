@@ -1,0 +1,80 @@
+
+/* Stack contact information above the social icons. */
+.contact {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+  width: 100%;
+  margin-top: -40px;
+  padding-bottom: 0;
+}
+
+/* Contact heading and email area. */
+.contact-info {
+  margin: 0;
+
+  /* Keep the text aligned with the About section. */
+  padding: 24px max(calc((100% - 1090px) / 2), 6%);
+}
+
+/* Email link styling. */
+.contact-info > a {
+  color: #000;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+/* Arrange the three social icons in a centered row. */
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  /* Keep the icon row in its natural position. */
+  transform: translateY(0);
+
+  /* Adjust the space around the icons. */
+  margin: 0;
+  margin-top: 40px;
+  margin-bottom: 0;
+
+  padding: 24px 12px;
+
+  /* Do not stretch the icon row vertically. */
+  flex: 0 0 auto;
+  min-height: 0;
+}
+
+/* Make each icon link a centered clickable area. */
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* Resume icon dimensions. */
+.social-links a:nth-child(1) img {
+  width: 45px;
+  height: 45px;
+}
+
+/* LinkedIn icon dimensions. */
+.social-links a:nth-child(2) img {
+  width: 37px;
+  height: 37px;
+}
+
+/* GitHub icon dimensions. */
+.social-links a:nth-child(3) img {
+  width: 40px;
+  height: 40px;
+}
+
+/* Shared styling for all social icon images. */
+.social-links img {
+  display: block;
+  object-fit: contain;
+}

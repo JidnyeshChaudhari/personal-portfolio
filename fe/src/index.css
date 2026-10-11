@@ -1,0 +1,24 @@
+
+/* 1. Global defaults: fonts, colors, and box sizing. */
+@import "./styles/global.css";
+
+/* 2. Overall page and main content layout. */
+@import "./styles/layout.css";
+
+/* 3. Navigation bar styling. */
+@import "./styles/navbar.css";
+
+/* 4. Profile image, name, and introduction. */
+@import "./styles/hero.css";
+
+/* 5. About section styling. */
+@import "./styles/about.css";
+
+/* 6. Contact information and social icons. */
+@import "./styles/contact.css";
+
+/* 7. Full-width section hover effects. */
+@import "./styles/hover.css";
+
+/* 8. Mobile styles must come after desktop styles. */
+@import "./styles/responsive.css";

@@ -6,77 +6,258 @@
     width: 100%;
     min-height: 100vh;
     margin: 0;
-    padding: 16px 0 30px;
+    padding: 0 0 30px;
+    box-sizing: border-box;
   }
 
-  /* Allow navigation links to wrap onto another line. */
+  /* Keep the mobile navbar in the normal document flow. */
   .navbar {
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 20px 6%;
-
-    /* Remove the desktop positioning adjustment. */
+    /* Keep the drawer at the top-right. */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1002;
     transform: none;
+
+    /* Make the drawer fit its navigation links. */
+    width: min(120px, 75vw);
+    height: auto;
+    max-height: 100vh;
+    overflow-y: auto;
+    
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0;
+
+    width: 100%;
+    padding: 12px 6%;
+    box-sizing: border-box;
+    z-index: 1000;
   }
 
-  .navbar a {
-    font-size: 13px;
+  /* Keep your name aligned on the left. */
+  .navbar-name {
+    position: static;
+    display: inline-block;
+    width: fit-content;
+    transform: none;
+    font-size: 20px;
   }
 
-  /* Reduce the hero image and spacing on mobile. */
+  /* Display the hamburger button on mobile. */
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+
+    position: relative;
+    z-index: 1004;
+    flex-shrink: 0;
+    padding: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Draw the three horizontal lines. */
+  .menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 0;
+    background-color: #000;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+
+  /* Turn the hamburger into a close icon when the drawer is open. */
+  .menu-toggle.is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Hide the navigation drawer when closed. */
+  .navbar-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1002;
+
+    width: min(280px, 80vw);
+    height: 100vh;
+    padding: 80px 24px 24px;
+    box-sizing: border-box;
+
+    background: #fff;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.08);
+
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0.3s ease;
+  }
+
+  /* Slide the drawer in from the right. */
+  .navbar-links.menu-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  /* Give each navigation option its own row. */
+  .navbar-links a {
+    display: block;
+    width: 100%;
+    padding: 16px 0;
+    box-sizing: border-box;
+
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* Remove the separator from the final option. */
+  .navbar-links a:last-child {
+    border-bottom: none;
+  }
+
+  /* Dim the page behind the open drawer. */
+  .menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1001;
+
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.35);
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Arrange the hero image and text on mobile. */
   .hero {
-    gap: 14px;
-    margin-top: 38px;
-    padding: 20px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 40px;
+    padding: 28px 6%;
+    box-sizing: border-box;
+    transform: translate(0px, 0px);
   }
 
+  /* Keep the profile image circular and visible. */
   .profile-image {
-    flex: 0 0 85px;
-    width: 85px;
-    height: 85px;
+    display: block;
+    flex: 0 0 100px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    transform: translate(-10px,10px);
   }
 
   /* Allow the introductory text to fit smaller screens. */
   .hero-text {
     min-width: 0;
     transform: none;
+    text-align: center;
   }
 
   .hero-text h1 {
-    font-size: clamp(20px, 5vw, 27px);
+    font-size: 28px;
     white-space: normal;
+    transform: translate(0px,3px);
+    
   }
 
   .hero-text p {
     padding-left: 0;
-    font-size: 12px;
-  }
-
-  /* Reduce About section padding. */
-  .about {
-    padding: 30px 6%;
-  }
-
-  /* Reduce Contact section padding. */
-  .contact-info {
-    padding: 24px 6%;
-  }
-
-  /* Smaller headings on mobile. */
-  .about h2,
-  .contact h2 {
-    font-size: 20px;
-  }
-
-  /* Smaller body text and email link. */
-  .about p,
-  .contact-info > a {
     font-size: 14px;
+    transform: translate(0px, 3px);
   }
 
-  /* Adjust spacing around the social icons. */
-  .social-links {
-    padding: 20px 6%;
-    gap: 8px;
+
+  /* Complete About Me Section */
+  
+  /* Controls only the heading “About Me” */
+  .about h2 {
+    font-size: 23px;       /* Heading text size */
+    margin-top: 35px;      /* Space above the heading */
+    margin-bottom: 10px;   /* Space between heading and description */
+    text-align: left;      /* Heading alignment */
+}
+
+  /* Controls the paragraph below the heading */
+  .about p {
+    font-size: 15px;       /* Description text size */
+    line-height: 1.6;      /* Space between lines */
+    margin-top: 0;         /* Space above the paragraph */
+    margin-bottom: 18px;  /* Space below the paragraph */
+    text-align: left;      /* Paragraph alignment */
+}
+  
+  /* Controls the entire section, including the heading and description together */
+  .about {
+    width: 100%;
+    margin-top: -100px 0 0; /* Moves the entire section down */
+    padding: 30px 6%;      /* Inner spacing: top/bottom and left/right */
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
   }
+
+  /* Style the Contact heading. */
+.contact h2 {
+  font-size: 23px;      /* Heading size */
+  margin-top: 0;        /* Space above heading */
+  margin-bottom: 10px;  /* Space below heading */
+  text-align: left;     /* Heading alignment */
+}
+
+  /* Style the email address. */
+.contact-info > a {
+  font-size: 15px;       /* Email text size */
+  line-height: 1.6;      /* Line spacing */
+  display: inline-block;
+  margin-top: 0;         /* Space above email */
+  margin-bottom: 16px;   /* Space below email */
+  overflow-wrap: anywhere;
+}
+
+ 
+/* Adjust the entire social links section. */
+.social-links {
+  display: flex;
+  flex-direction: row;       /* Arrange icons horizontally */
+  justify-content: center;   /* Center icons horizontally */
+  align-items: center;       /* Align icons vertically */
+  flex-wrap: wrap;           /* Allow icons to wrap on small screens */
+
+  gap: 16px;                 /* Space between icons */
+
+  margin-top: 0;             /* Space outside above the section */
+  margin-bottom: 0;          /* Space outside below the section */
+
+  padding: 24px 6%;          /* Inner spacing: vertical and horizontal */
+
+  width: 100%;
+  box-sizing: border-box;
+}
+
 }

@@ -1,21 +1,36 @@
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/navbar.jsx";
 import Hero from "./components/hero.jsx";
 import About from "./components/about.jsx";
 import Contact from "./components/Contact.jsx";
+import Education from "./pages/education.jsx";
+
 import "./index.css";
+
+function HomePage() {
+  return (
+    <main>
+      <Hero />
+      <About />
+      <Contact />
+    </main>
+  );
+}
 
 function App() {
   return (
-    <div className="portfolio-container">
-      <Navbar />
+    <BrowserRouter>
+      <div className="portfolio-container">
+        <Navbar />
 
-      <main>
-        <Hero />
-        <About />
-        <Contact />
-      </main>
-    </div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/education" element={<Education />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

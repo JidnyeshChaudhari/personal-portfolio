@@ -17,8 +17,5 @@
 /* 6. Contact information and social icons. */
 @import "./styles/contact.css";
 
-/* 7. Full-width section hover effects. */
-@import "./styles/hover.css";
-
-/* 8. Mobile styles must come after desktop styles. */
+/* 7. Mobile styles must come after desktop styles. */
 @import "./styles/responsive.css";

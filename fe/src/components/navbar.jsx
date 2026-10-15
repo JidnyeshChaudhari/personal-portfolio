@@ -1,37 +1,47 @@
 
 import portfolio from "../data/portfolio.js";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
-  // Track whether the mobile navigation drawer is open.
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-  // Close the drawer after a navigation link is selected.
   const closeMenu = () => {
     setMenuOpen(false);
   };
 
+  const handleSectionNavigation = (section) => {
+    closeMenu();
+    navigate(`/#${section}`);
+  };
+
   return (
     <nav className="navbar">
-      {/* Your name on the left side of the navbar. */}
-      <span className="navbar-name">{portfolio.name}</span>
+      <Link
+        to="/"
+        className="navbar-name"
+        onClick={closeMenu}
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        {portfolio.name}
+      </Link>
 
-      {/* Toggle button for the mobile navigation drawer. */}
       <button
         type="button"
         className={`menu-toggle ${menuOpen ? "is-open" : ""}`}
         onClick={() => setMenuOpen(!menuOpen)}
-        aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+        aria-label={
+          menuOpen ? "Close navigation menu" : "Open navigation menu"
+        }
         aria-expanded={menuOpen}
         aria-controls="mobile-navigation"
       >
-        {/* CSS transforms these lines into a close icon when open. */}
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      {/* Dimmed backdrop; clicking it closes the drawer. */}
       {menuOpen && (
         <button
           type="button"
@@ -41,29 +51,44 @@ function Navbar() {
         />
       )}
 
-      {/* Navigation links for desktop and the mobile drawer. */}
       <div
         id="mobile-navigation"
         className={`navbar-links ${menuOpen ? "menu-open" : ""}`}
       >
-        {/* Close the drawer after selecting a section. */}
-        <a href="#about" onClick={closeMenu}>
+        <a
+          href="/#about"
+          onClick={(event) => {
+            event.preventDefault();
+            handleSectionNavigation("about");
+          }}
+        >
           About
         </a>
 
-        <a href="#education" onClick={closeMenu}>
+        <Link to="/education" onClick={closeMenu}>
           Education
-        </a>
+        </Link>
 
-        <a href="#experience" onClick={closeMenu}>
+        <a
+          href="/#experience"
+          onClick={(event) => {
+            event.preventDefault();
+            handleSectionNavigation("experience");
+          }}
+        >
           Experience
         </a>
 
-        <a href="#projects" onClick={closeMenu}>
+        <a
+          href="/#projects"
+          onClick={(event) => {
+            event.preventDefault();
+            handleSectionNavigation("projects");
+          }}
+        >
           Projects
         </a>
 
-        {/* Open the resume in a new browser tab. */}
         <a
           href={portfolio.resume.url}
           target="_blank"

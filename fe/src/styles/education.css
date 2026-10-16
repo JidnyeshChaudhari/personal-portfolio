@@ -280,16 +280,11 @@
 
 @media (max-width: 560px) {
   .education-section {
-    padding: 28px 20px 40px;
+    padding: 80px 20px 40px;
   }
 
   .education-heading {
     margin-bottom: 34px;
-  }
-
-  .education-eyebrow {
-    font-size: 11px;
-    letter-spacing: 2px;
   }
 
   .education-heading h2 {
@@ -338,7 +333,7 @@
   }
 
   .education-degree {
-    margin-bottom: 8px;
+    margin-bottom: 15px;
     font-size: 18px;
     line-height: 1.35;
   }
@@ -369,6 +364,7 @@
     margin: 0;
     font-size: 12px;
     text-align: left;
+    transform: translate(-2px, -20px);
   }
 }
 

@@ -19,3 +19,5 @@
 
 /* 7. Mobile styles must come after desktop styles. */
 @import "./styles/responsive.css";
+
+@import "./styles/projects.css";

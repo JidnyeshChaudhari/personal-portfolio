@@ -7,6 +7,7 @@ import About from "./components/about.jsx";
 import Contact from "./components/Contact.jsx";
 import Education from "./pages/education.jsx";
 import Experience from "./pages/experience.jsx";
+import Projects from "./pages/projects.jsx";
 
 import "./index.css";
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/education" element={<Education />} />
           <Route path="/experience" element={<Experience />} />
+          <Route path="/projects" element={<Projects />} />
         </Routes>
       </div>
     </BrowserRouter>

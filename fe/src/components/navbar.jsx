@@ -1,19 +1,13 @@
 
 import portfolio from "../data/portfolio.js";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate();
 
   const closeMenu = () => {
     setMenuOpen(false);
-  };
-
-  const handleSectionNavigation = (section) => {
-    closeMenu();
-    navigate(`/#${section}`);
   };
 
   return (
@@ -55,15 +49,9 @@ function Navbar() {
         id="mobile-navigation"
         className={`navbar-links ${menuOpen ? "menu-open" : ""}`}
       >
-        <a
-          href="/#about"
-          onClick={(event) => {
-            event.preventDefault();
-            handleSectionNavigation("about");
-          }}
-        >
+        <Link to="/#about" onClick={closeMenu}>
           About
-        </a>
+        </Link>
 
         <Link to="/education" onClick={closeMenu}>
           Education
@@ -73,15 +61,9 @@ function Navbar() {
           Experience
         </Link>
 
-        <a
-          href="/#projects"
-          onClick={(event) => {
-            event.preventDefault();
-            handleSectionNavigation("projects");
-          }}
-        >
+        <Link to="/projects" onClick={closeMenu}>
           Projects
-        </a>
+        </Link>
 
         <a
           href={portfolio.resume.url}

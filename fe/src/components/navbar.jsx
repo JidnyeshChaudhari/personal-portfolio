@@ -69,15 +69,9 @@ function Navbar() {
           Education
         </Link>
 
-        <a
-          href="/#experience"
-          onClick={(event) => {
-            event.preventDefault();
-            handleSectionNavigation("experience");
-          }}
-        >
+        <Link to="/experience" onClick={closeMenu}>
           Experience
-        </a>
+        </Link>
 
         <a
           href="/#projects"

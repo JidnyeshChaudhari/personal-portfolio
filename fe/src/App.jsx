@@ -6,6 +6,7 @@ import Hero from "./components/hero.jsx";
 import About from "./components/about.jsx";
 import Contact from "./components/Contact.jsx";
 import Education from "./pages/education.jsx";
+import Experience from "./pages/experience.jsx";
 
 import "./index.css";
 
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/education" element={<Education />} />
+          <Route path="/experience" element={<Experience />} />
         </Routes>
       </div>
     </BrowserRouter>

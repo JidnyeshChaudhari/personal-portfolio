@@ -2,15 +2,7 @@
 {
   "rewrites": [
     {
-      "source": "/education",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/experience",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/projects",
+      "source": "/((?!sitemap\\.xml|robots\\.txt|assets/).*)",
       "destination": "/index.html"
     }
   ]
